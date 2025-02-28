@@ -3,14 +3,14 @@
 {
   packages = with pkgs; [ 
     git
-    ta-lib
-    (python3.withPackages(ps: with ps; [ 
-      python-dotenv
-      pandas
-      numpy
-      sqlalchemy
-      psycopg2
-    ]))
+    # ta-lib
+    # (python3.withPackages(ps: with ps; [ 
+    #   python-dotenv
+    #   pandas
+    #   numpy
+    #   sqlalchemy
+    #   psycopg
+    # ]))
   ];
   languages.python.enable = true;
   languages.python.venv.enable = true;
