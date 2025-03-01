@@ -1,19 +1,16 @@
-from dotenv import load_dotenv
-
 import os
 import csv
+import time
+from io import StringIO
+
+from dotenv import load_dotenv
+
 import pwb_toolbox.datasets as pwb_ds
+
 import pandas as pd
 import numpy as np
 
-import psycopg2 
-import pandas as pd 
-import numpy as np
 from sqlalchemy import create_engine
-from dotenv import load_dotenv
-
-import time
-from io import StringIO
 
 load_dotenv()
 
@@ -43,10 +40,8 @@ def psql_insert_copy(table, conn, keys, data_iter): #mehod
         else:
             table_name = table.name
 
-        sql = 'COPY {} ({}) FROM STDIN WITH CSV'.format(
-            table_name, columns)
+        sql = 'COPY {} ({}) FROM STDIN WITH CSV'.format(table_name, columns)
         cur.copy_expert(sql=sql, file=s_buf)
-
 
 indices = { 
     "All-Daily-News": "daily_news",
@@ -63,7 +58,8 @@ indices = {
     "Stocks-Quarterly-IncomeStatement": "stocks_quarterly_incomestatement"
 }
 
-engine = create_engine(f'postgresql://jrizzo:{os.environ["PG_PASS"]}@irl.warthog-trout.ts.net:5432/market_data')
+CONNECTION_STRING = f'postgresql://{os.environ["PG_USER"]}:{os.environ["PG_PASS"]}@{os.environ["PG_URL"]}/{os.environ["PG_DB"]}'
+engine = create_engine(CONNECTION_STRING)
 
 start_total_time = time.time() # get start time before insert
 print(f'Starting Data Load {start_total_time}')

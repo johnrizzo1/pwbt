@@ -208,6 +208,14 @@ wheels = [
 ]
 
 [[package]]
+name = "backtrader"
+version = "1.9.78.123"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f3/ef/328c6ec332435f63b3e18febd263686b8ba07e990676a862cc8522ba38f5/backtrader-1.9.78.123-py2.py3-none-any.whl", hash = "sha256:9a07a516b0de9155539a35c56e9404d8711dd7020b3d37b30495e83e1b9d5dfd", size = 419517 },
+]
+
+[[package]]
 name = "beautifulsoup4"
 version = "4.13.3"
 source = { registry = "https://pypi.org/simple" }
@@ -1955,9 +1963,9 @@ name = "pwbt"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "backtrader" },
     { name = "jupyter" },
     { name = "keras" },
-    { name = "matplotlib" },
     { name = "numpy" },
     { name = "pandas" },
     { name = "pq" },
@@ -1976,9 +1984,9 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "backtrader", specifier = ">=1.9.78.123" },
     { name = "jupyter", specifier = ">=1.1.1" },
     { name = "keras", specifier = ">=3.8.0" },
-    { name = "matplotlib", specifier = ">=3.10.1" },
     { name = "numpy", specifier = ">=2.0.2" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "pq", specifier = ">=1.9.1" },
